@@ -43,7 +43,7 @@ def handle_menu():
                "remove",
                "update"]
 
-    ui.print_menu("Store module", options, "back to the main menu")
+    ui.print_menu("\nStore manager", options, "back to the main menu")
 
 
 def start_module():
