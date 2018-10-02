@@ -62,6 +62,12 @@ def print_menu(title, list_options, exit_message):
     """
 
     # your code
+    print(title)
+    number = 1
+    for element in list_options:
+        print("(%s) %s " % (number, element))
+        number += 1
+    print("(0) %s " % exit_message)
 
 
 def get_inputs(list_labels, title):
@@ -83,9 +89,11 @@ def get_inputs(list_labels, title):
         list: List of data given by the user. Sample return:
             [<user_input_1>, <user_input_2>, <user_input_3>]
     """
-    inputs = []
 
     # your code
+    list_labels = ["Please enter a number: "]
+    title = "Please provide your personal information"
+    inputs = input(list_labels)
 
     return inputs
 
