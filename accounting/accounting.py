@@ -28,7 +28,7 @@ def choose():
     if option == "1":
         show_table(table)
     elif option == "2":
-        common.add(table)
+        add(table)
     elif option == "3":
         common.remove(table, id_)
     elif option == "4":
@@ -66,13 +66,6 @@ def start_module():
         except KeyError as err:
             ui.print_error_message(str(err))
 
-    while True:
-        handle_menu()
-        try:
-            choose()
-        except KeyError as err:
-            ui.print_error_message(str(err))
-
 
 def show_table(table):
     """
@@ -86,7 +79,6 @@ def show_table(table):
     """
 
     # your code
-    title_list = ["ID", "Month", "Day", "Year", "Type", "Amount"]
     ui.print_table(table, title_list)
 
 
@@ -103,6 +95,7 @@ def add(table):
 
     # your code
 
+    new_items = ui.get_inputs(new_data_properties,"\nPlease provide the following items:")
     # return table
 
 
@@ -170,3 +163,7 @@ def avg_amount(table, year):
     """
 
     # your code
+
+
+title_list = ["ID", "Month", "Day", "Year", "Type", "Amount"]
+new_data_properties = ["Month", "Day", "Year", "Type", "Amount"]

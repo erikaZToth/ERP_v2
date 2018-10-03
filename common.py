@@ -45,6 +45,14 @@ def generate_random(table):
     return generated
 
 
+def show_table(table):
+    pass
+
+
+def add(table):
+    pass
+
+
 def remove(table, id_):
     """
     Remove a record with a given id from the table.
@@ -58,3 +66,8 @@ def remove(table, id_):
     """
 
     # your code
+    pass
+
+
+def update(table, id_):
+    pass

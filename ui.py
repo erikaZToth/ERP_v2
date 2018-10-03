@@ -28,22 +28,24 @@ def print_table(table, title_list):
     number_of_columns = len(table[0])
 
     # width of table and columns
-    max_with_of_column_list = [len(title_list[element]) for element in range(len(title_list))]  # collect with of columns into a list
+#    max_width_of_column_list = [len(title_list[element]) for element in range(len(title_list))]  # collect width of columns into a list
+    max_width_of_column_list = [len(title) for title in title_list]  # collect width of columns into a list
     width_of_table = 0  # with of table: integer
-
+    
+    # ---- put it to a separate function
     for column in range(number_of_columns):
         for row in range(number_of_rows):
             width_of_column = len(table[row][column])
-            if width_of_column > max_with_of_column_list[column]:
-                max_with_of_column_list[column] = width_of_column
-        width_of_table += max_with_of_column_list[column]
+            if width_of_column > max_width_of_column_list[column]:
+                max_width_of_column_list[column] = width_of_column
+        width_of_table += max_width_of_column_list[column]
 
     # format and print title list
     width_for_formatting = width_of_table + number_of_columns * 3 - 1
     print("\n/" + "=" * (width_for_formatting) + "\\")
     title_formatted = "| "
     for column in range(number_of_columns):
-        title_formatted += str(title_list[column] + " | ").rjust(max_with_of_column_list[column] + 3)
+        title_formatted += str(title_list[column] + " | ").rjust(max_width_of_column_list[column] + 3)
     print(title_formatted)
     print("\\" + "=" * (width_for_formatting) + "/")
 
@@ -52,7 +54,7 @@ def print_table(table, title_list):
         row_of_table = table[row]
         row_formatted = "| "
         for column in range(number_of_columns):
-            row_formatted += str(row_of_table[column] + " | ").rjust(max_with_of_column_list[column] + 3)
+            row_formatted += str(row_of_table[column] + " | ").rjust(max_width_of_column_list[column] + 3)
         print(row_formatted)
         print("|" + "–" * (width_for_formatting) + "|")
 
@@ -123,9 +125,14 @@ def get_inputs(list_labels, title):
     """
 
     # your code
-    list_labels = ["Please enter a number: "]
-    title = "Please provide your personal information"
-    inputs = input(list_labels)
+
+    print(title)
+    # print("Labels", list_labels)
+    inputs = []
+    for i in range(len(list_labels)):
+        label = input(list_labels[i] + " ")
+        inputs += [label]
+    # print("inputs", inputs)
 
     return inputs
 
