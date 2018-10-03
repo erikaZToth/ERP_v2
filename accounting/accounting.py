@@ -94,9 +94,16 @@ def add(table):
     """
 
     # your code
-
-    new_items = ui.get_inputs(new_data_properties,"\nPlease provide the following items:")
-    # return table
+    
+    new_ID = ["ID"]  # new_ID = common.generate_random(table)
+    new_items = ui.get_inputs(new_data_properties, "\nPlease provide the following items:")
+    new_line_to_add = new_ID + new_items
+    print(new_line_to_add)
+    table += [new_line_to_add]
+    print(table)
+    data_manager.write_table_to_file("accounting/items.csv", table)
+    
+    return table
 
 
 def remove(table, id_):
@@ -165,5 +172,6 @@ def avg_amount(table, year):
     # your code
 
 
+table = "items.csv"
 title_list = ["ID", "Month", "Day", "Year", "Type", "Amount"]
 new_data_properties = ["Month", "Day", "Year", "Type", "Amount"]

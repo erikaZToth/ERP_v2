@@ -28,11 +28,14 @@ def print_table(table, title_list):
     number_of_columns = len(table[0])
 
     # width of table and columns
-#    max_width_of_column_list = [len(title_list[element]) for element in range(len(title_list))]  # collect width of columns into a list
-    max_width_of_column_list = [len(title) for title in title_list]  # collect width of columns into a list
-    width_of_table = 0  # with of table: integer
+    # max_width_of_column_list = [len(title_list[element]) for element in range(len(title_list))]  # collect width of columns into a list
     
-    # ---- put it to a separate function
+    # ---- put into a separate function the calculation of length of table and columns
+
+    # collect width of columns into a list
+    max_width_of_column_list = [len(title) for title in title_list]
+    width_of_table = 0  # with of table: integer
+
     for column in range(number_of_columns):
         for row in range(number_of_rows):
             width_of_column = len(table[row][column])
