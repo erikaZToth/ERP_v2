@@ -22,7 +22,39 @@ def print_table(table, title_list):
         None: This function doesn't return anything it only prints to console.
     """
 
-    # your goes code
+    # your code
+
+    number_of_rows = len(table)
+    number_of_columns = len(table[0])
+
+    # width of table and columns
+    max_with_of_column_list = [len(title_list[element]) for element in range(len(title_list))]  # collect with of columns into a list
+    width_of_table = 0  # with of table: integer
+
+    for column in range(number_of_columns):
+        for row in range(number_of_rows):
+            width_of_column = len(table[row][column])
+            if width_of_column > max_with_of_column_list[column]:
+                max_with_of_column_list[column] = width_of_column
+        width_of_table += max_with_of_column_list[column]
+
+    # format and print title list
+    width_for_formatting = width_of_table + number_of_columns * 3 - 1
+    print("\n/" + "=" * (width_for_formatting) + "\\")
+    title_formatted = "| "
+    for column in range(number_of_columns):
+        title_formatted += str(title_list[column] + " | ").rjust(max_with_of_column_list[column] + 3)
+    print(title_formatted)
+    print("\\" + "=" * (width_for_formatting) + "/")
+
+    # format and print table
+    for row in range(number_of_rows):
+        row_of_table = table[row]
+        row_formatted = "| "
+        for column in range(number_of_columns):
+            row_formatted += str(row_of_table[column] + " | ").rjust(max_with_of_column_list[column] + 3)
+        print(row_formatted)
+        print("|" + "–" * (width_for_formatting) + "|")
 
 
 def print_result(result, label):

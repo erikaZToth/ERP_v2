@@ -17,6 +17,35 @@ import ui
 import data_manager
 # common module
 import common
+# main module (it is vorbidden)
+import main
+
+
+def choose():
+    inputs = ui.get_inputs(["Please enter a number: "], "")
+    option = inputs[0]
+    table = data_manager.get_table_from_file("accounting/items.csv")
+    if option == "1":
+        show_table(table)
+    elif option == "2":
+        common.add(table)
+    elif option == "3":
+        common.remove(table, id_)
+    elif option == "4":
+        common.update(table, id_)
+    elif option == "0":
+        main.main()
+    else:
+        raise KeyError("There is no such option.")
+
+
+def handle_menu():
+    options = ["show table",
+               "add",
+               "remove",
+               "update"]
+
+    ui.print_menu("\nAccounting manager", options, "back to the main menu")
 
 
 def start_module():
@@ -31,6 +60,13 @@ def start_module():
 
     # you code
 
+    while True:
+        handle_menu()
+        try:
+            choose()
+        except KeyError as err:
+            ui.print_error_message(str(err))
+
 
 def show_table(table):
     """
@@ -44,6 +80,8 @@ def show_table(table):
     """
 
     # your code
+    title_list = ["ID", "Month", "Day", "Year", "Type", "Amount"]
+    ui.print_table(table, title_list)
 
 
 def add(table):
@@ -59,7 +97,7 @@ def add(table):
 
     # your code
 
-    return table
+    # return table
 
 
 def remove(table, id_):
@@ -76,7 +114,7 @@ def remove(table, id_):
 
     # your code
 
-    return table
+    # return table
 
 
 def update(table, id_):
@@ -93,7 +131,7 @@ def update(table, id_):
 
     # your code
 
-    return table
+    # return table
 
 
 # special functions:
