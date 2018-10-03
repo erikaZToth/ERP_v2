@@ -17,6 +17,34 @@ import ui
 import data_manager
 # common module
 import common
+# main module (it is vorbidden)
+import main
+
+
+def choose():
+    inputs = ui.get_inputs(["Please enter a number: "], "")
+    option = inputs[0]
+    if option == "1":
+        common.show_table(table)
+    elif option == "2":
+        common.add(table)
+    elif option == "3":
+        common.remove(table, id_)
+    elif option == "4":
+        common.update(table, id_)
+    elif option == "0":
+        main.main()
+    else:
+        raise KeyError("There is no such option.")
+
+
+def handle_menu():
+    options = ["show table",
+               "add",
+               "remove",
+               "update"]
+
+    ui.print_menu("\nSales manager", options, "back to the main menu")
 
 
 def start_module():
@@ -30,6 +58,12 @@ def start_module():
     """
 
     # your code
+    while True:
+        handle_menu()
+        try:
+            choose()
+        except KeyError as err:
+            ui.print_error_message(str(err))
 
 
 def show_table(table):

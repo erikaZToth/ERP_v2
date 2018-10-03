@@ -58,7 +58,13 @@ def start_module():
         None
     """
 
-    # you code
+    # your code
+    while True:
+        handle_menu()
+        try:
+            choose()
+        except KeyError as err:
+            ui.print_error_message(str(err))
 
     while True:
         handle_menu()
