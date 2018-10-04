@@ -17,7 +17,7 @@ import ui
 import data_manager
 # common module
 import common
-# main module (it is vorbidden)
+# main module
 import main
 
 
