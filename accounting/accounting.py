@@ -25,12 +25,14 @@ def choose():
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
     file_name = "accounting/items.csv"
+    new_data_properties = ["Month", "Day", "Year", "Type", "Amount"]
+    title = "Please provide the following items: "
     table = data_manager.get_table_from_file(file_name)
     if option == "1":
         title_list = ["ID", "Month", "Day", "Year", "Type", "Amount"]
         ui.print_table(table, title_list)
     elif option == "2":
-        new_items = ui.get_inputs(["Month", "Day", "Year", "Type", "Amount"], "\nPlease provide the following items:")
+        new_items = ui.get_inputs(new_data_properties, title)
         common.add_item(table, new_items, file_name)
     elif option == "3":
         id_ = ui.get_inputs(["ID"], "\nWhat is the ID of the item you want to remove?")
@@ -71,23 +73,6 @@ def start_module():
             choose()
         except KeyError as err:
             ui.print_error_message(str(err))
-
-
-def update(table, id_):
-    """
-    Updates specified record in the table. Ask users for new data.
-
-    Args:
-        table (list): list in which record should be updated
-        id_ (str): id of a record to update
-
-    Returns:
-        list: table with updated record
-    """
-
-    # your code
-
-    # return table
 
 
 # special functions:
