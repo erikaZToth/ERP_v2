@@ -3,6 +3,8 @@ implement commonly used functions here
 """
 
 import random
+import ui
+import data_manager
 
 
 def generate_random(table):
@@ -49,9 +51,26 @@ def start_module():
     pass
 
 
-def add(table):
-    pass
+def add_item(table, new_items, file_name):
+    """
+    Asks user for input and adds it into the table.
 
+    Args:
+        table (list): table to add new record to
+
+    Returns:
+        list: Table with a new record
+    """
+
+    # your code
+
+    new_ID = ["ID"]  # new_ID = common.generate_random(table)
+    new_line_to_add = new_ID + new_items
+    table += [new_line_to_add]
+    data_manager.write_table_to_file(file_name, table)
+    
+    return table
+    
 
 def remove(table, id_):
     """

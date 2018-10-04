@@ -30,7 +30,7 @@ def choose():
     elif option == "2":
         add(table)
     elif option == "3":
-        common.remove(table, id_)
+        remove(table, id_)
     elif option == "4":
         common.update(table, id_)
     elif option == "0":
@@ -95,14 +95,9 @@ def add(table):
 
     # your code
     
-    new_ID = ["ID"]  # new_ID = common.generate_random(table)
-    new_items = ui.get_inputs(new_data_properties, "\nPlease provide the following items:")
-    new_line_to_add = new_ID + new_items
-    print(new_line_to_add)
-    table += [new_line_to_add]
-    print(table)
-    data_manager.write_table_to_file("accounting/items.csv", table)
-    
+    new_items = ui.get_inputs(new_data_properties, title)
+    common.add_item(table, new_items, file_name)
+
     return table
 
 
@@ -119,6 +114,7 @@ def remove(table, id_):
     """
 
     # your code
+    # id_ = ui.get_inputs(remove_data_id, title_remove)
 
     # return table
 
@@ -172,6 +168,10 @@ def avg_amount(table, year):
     # your code
 
 
+file_name = "accounting/items.csv"
 table = "items.csv"
 title_list = ["ID", "Month", "Day", "Year", "Type", "Amount"]
+title = "\nPlease provide the following items:"
 new_data_properties = ["Month", "Day", "Year", "Type", "Amount"]
+remove_data_id = ["ID"]
+title_remove = "\nWhat is the ID of the item you want to remove?"
