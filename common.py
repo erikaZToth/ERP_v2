@@ -37,16 +37,17 @@ def generate_random(table):
                     lower_case_letters_list[random.randint(0, (len(lower_case_letters_list)-1))] +
                     special_characters_list[random.randint(0, (len(special_characters_list)-1))] +
                     special_characters_list[random.randint(0, (len(special_characters_list)-1))])
-
-
-    '''while True:
-        for i in table:
-            if table[i][0] == generated:
-                True
-            else:
-                False'''
     
+    # check_generate_random(table, generated)
     return generated
+
+
+def check_generate_random(table, generated):
+    for i in table:
+        if generated == table[i][0]:
+            generate_random(table)
+        else:
+            return generated
 
 
 def start_module():
@@ -91,4 +92,5 @@ def remove(table, id_):
 
 
 def update(table, id_):
+
     pass
