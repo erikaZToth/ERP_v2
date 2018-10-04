@@ -108,7 +108,7 @@ def update(table, new_items, file_name, id_):
 
     new_line_elements = new_items
     new_line_elements.insert(0, id_[0])
-    print(new_line_elements)
+    # print(new_line_elements)
 
     for i in range(len(table)):
         if id_[0] == table[i][0]:
