@@ -25,11 +25,11 @@ def choose():
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
     file_name = "sales/sales.csv"
-    new_data_properties = ["Title", "Price", "Month", "Day", "Year"]
+    new_data_properties = ["Title", "Price (USD)", "Month", "Day", "Year"]
     title = "Please provide the following items: "
     table = data_manager.get_table_from_file(file_name)
     if option == "1":
-        title_list = ["ID", "Title", "Price", "Month", "Day", "Year"]
+        title_list = ["ID", "Title", "Price (USD)", "Month", "Day", "Year"]
         ui.print_table(table, title_list)
     elif option == "2":
         new_items = ui.get_inputs(new_data_properties, title)
