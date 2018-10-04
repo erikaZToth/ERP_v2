@@ -30,9 +30,11 @@ def choose():
     elif option == "2":
         add(table)
     elif option == "3":
+        id_ = ui.get_inputs(["ID"], "\nWhat is the ID of the item you want to remove?")
         remove(table, id_)
     elif option == "4":
-        common.update(table, id_)
+        id_ = ui.get_inputs(["ID"], "\nWhat is the ID of the item you want to update?")
+        update(table, id_)
     elif option == "0":
         main.main()
     else:
@@ -114,7 +116,7 @@ def remove(table, id_):
     """
 
     # your code
-    # id_ = ui.get_inputs(remove_data_id, title_remove)
+    
 
     # return table
 
