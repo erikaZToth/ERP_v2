@@ -29,20 +29,22 @@ def generate_random(table):
     # generated = ''
     # eH34Jd#&
 
-    while True:
-        generated = str(lower_case_letters_list[random.randint(0, (len(lower_case_letters_list)-1))] +
-                        upper_case_letters_list[random.randint(0, (len(upper_case_letters_list)-1))] +
-                        numbers_list[random.randint(0, (len(numbers_list)-1))] +
-                        numbers_list[random.randint(0, (len(numbers_list)-1))] +
-                        upper_case_letters_list[random.randint(0, (len(upper_case_letters_list)-1))] +
-                        lower_case_letters_list[random.randint(0, (len(lower_case_letters_list)-1))] +
-                        special_characters_list[random.randint(0, (len(special_characters_list)-1))] +
-                        special_characters_list[random.randint(0, (len(special_characters_list)-1))])
+    generated = str(lower_case_letters_list[random.randint(0, (len(lower_case_letters_list)-1))] +
+                    upper_case_letters_list[random.randint(0, (len(upper_case_letters_list)-1))] +
+                    numbers_list[random.randint(0, (len(numbers_list)-1))] +
+                    numbers_list[random.randint(0, (len(numbers_list)-1))] +
+                    upper_case_letters_list[random.randint(0, (len(upper_case_letters_list)-1))] +
+                    lower_case_letters_list[random.randint(0, (len(lower_case_letters_list)-1))] +
+                    special_characters_list[random.randint(0, (len(special_characters_list)-1))] +
+                    special_characters_list[random.randint(0, (len(special_characters_list)-1))])
+
+
+    '''while True:
         for i in table:
             if table[i][0] == generated:
                 True
             else:
-                False
+                False'''
     
     return generated
 
@@ -64,7 +66,7 @@ def add_item(table, new_items, file_name):
 
     # your code
 
-    new_ID = ["ID"]  # new_ID = common.generate_random(table)
+    new_ID = [generate_random(table)]  
     new_line_to_add = new_ID + new_items
     table += [new_line_to_add]
     data_manager.write_table_to_file(file_name, table)
