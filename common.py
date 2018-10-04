@@ -37,13 +37,13 @@ def generate_random(table):
                     lower_case_letters_list[random.randint(0, (len(lower_case_letters_list)-1))] +
                     special_characters_list[random.randint(0, (len(special_characters_list)-1))] +
                     special_characters_list[random.randint(0, (len(special_characters_list)-1))])
-    
-    # check_generate_random(table, generated)
+
+    check_generate_random(table, generated)
     return generated
 
 
 def check_generate_random(table, generated):
-    for i in table:
+    for i in range(len(table)):
         if generated == table[i][0]:
             generate_random(table)
         else:
@@ -71,9 +71,9 @@ def add_item(table, new_items, file_name):
     new_line_to_add = new_ID + new_items
     table += [new_line_to_add]
     data_manager.write_table_to_file(file_name, table)
-    
+
     return table
-    
+
 
 def remove(table, id_):
     """
@@ -91,6 +91,13 @@ def remove(table, id_):
     pass
 
 
-def update(table, id_):
+def update(table, new_items, file_name, id_):
 
-    pass
+    new_line_elements = new_items
+    new_line_elements.insert(0, id_[0])
+    print(new_line_elements)
+    for i in range(len(table)):
+        if id_[0] == table[i][0]:
+            table[i] = new_line_elements
+
+    data_manager.write_table_to_file(file_name, table)
