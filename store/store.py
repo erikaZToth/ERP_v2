@@ -16,21 +16,30 @@ import ui
 import data_manager
 # common module
 import common
-# main module (it is vorbidden)
+# main module
 import main
 
 
 def choose():
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
+    file_name = "store/games.csv"
+    new_data_properties = ["Title", "Manufacturer", "Price (USD)", "Stock"]
+    title = "Please provide the following items: "
+    table = data_manager.get_table_from_file(file_name)
     if option == "1":
-        common.show_table(table)
+        title_list = ["ID", "Title", "Manufacturer", "Price (USD)", "Stock"]
+        ui.print_table(table, title_list)
     elif option == "2":
-        common.add(table)
+        new_items = ui.get_inputs(new_data_properties, title)
+        common.add_item(table, new_items, file_name)
     elif option == "3":
-        common.remove(table, id_)
+        id_ = ui.get_inputs(["ID"], "\nWhat is the ID of the item you want to remove?")
+        common.remove(table, id_, file_name)
     elif option == "4":
-        common.update(table, id_)
+        id_ = ui.get_inputs(["ID"], "\nWhat is the ID of the item you want to update?")
+        new_items = ui.get_inputs(new_data_properties, title)
+        common.update(table, new_items, file_name, id_)
     elif option == "0":
         main.main()
     else:
