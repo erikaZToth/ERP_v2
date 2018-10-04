@@ -22,14 +22,13 @@ def print_table(table, title_list):
         None: This function doesn't return anything it only prints to console.
     """
 
-    # your code
-
     number_of_rows = len(table)
     number_of_columns = len(table[0])
 
     # width of table and columns
-    # max_width_of_column_list = [len(title_list[element]) for element in range(len(title_list))]  # collect width of columns into a list
-    
+    # max_width_of_column_list = [len(title_list[element]) for element in range(len(title_list))]
+    # collect width of columns into a list
+
     # ---- put into a separate function the calculation of length of table and columns
 
     # collect width of columns into a list
@@ -98,7 +97,6 @@ def print_menu(title, list_options, exit_message):
         None: This function doesn't return anything it only prints to console.
     """
 
-    # your code
     print(title)
     number = 1
     for element in list_options:
@@ -127,15 +125,11 @@ def get_inputs(list_labels, title):
             [<user_input_1>, <user_input_2>, <user_input_3>]
     """
 
-    # your code
-
     print(title)
-    # print("Labels", list_labels)
     inputs = []
     for i in range(len(list_labels)):
         label = input(list_labels[i] + " ")
         inputs += [label]
-    # print("inputs", inputs)
 
     return inputs
 
@@ -151,6 +145,5 @@ def print_error_message(message):
         None: This function doesn't return anything it only prints to console.
     """
 
-    # your code
     message = "There is no such option.\n"
     print(message)

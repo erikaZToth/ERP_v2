@@ -20,7 +20,6 @@ def generate_random(table):
         string: Random and unique string
     """
 
-    # your code
     special_characters_list = ['+', '!', '%', '/', '=', '-', '*', ',', '&', '@', 'ß', 'Ł', 'Đ', '~']
     numbers_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     lower_case_letters_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -65,8 +64,6 @@ def add_item(table, new_items, file_name):
         list: Table with a new record
     """
 
-    # your code
-
     new_ID = [generate_random(table)]
     new_line_to_add = new_ID + new_items
     table += [new_line_to_add]
@@ -87,10 +84,8 @@ def remove(table, id_, file_name):
         list: Table without specified record.
     """
 
-    # your code
-
     for i in range(len(table)):
-        if table[i][0] == id_[0]:
+        if id_[0] == table[i][0]:
             del table[i]
             break
     data_manager.write_table_to_file(file_name, table)
@@ -100,11 +95,38 @@ def remove(table, id_, file_name):
 
 def update(table, new_items, file_name, id_):
 
+    """
+    Updates specified record in the table. Ask users for new data.
+
+    Args:
+        table: list in which record should be updated
+        id_ (str): id of a record to update
+
+    Returns:
+        list: table with updated record
+    """
+
     new_line_elements = new_items
     new_line_elements.insert(0, id_[0])
     print(new_line_elements)
+
     for i in range(len(table)):
         if id_[0] == table[i][0]:
             table[i] = new_line_elements
 
     data_manager.write_table_to_file(file_name, table)
+    return table
+
+
+'''def update_id_check(table):
+    while True:
+        id_ = ui.get_inputs(["ID"], "\nWhat is the ID of the item you want to update?")
+        for i in range(len(table)):
+            if id_[0] != table[i][0]:
+                ui.print_error_message("There is no such ID.\n")
+                break
+            else:
+                break
+
+    return id_'''
+    
