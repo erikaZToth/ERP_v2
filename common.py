@@ -67,7 +67,7 @@ def add_item(table, new_items, file_name):
 
     # your code
 
-    new_ID = [generate_random(table)]  
+    new_ID = [generate_random(table)]
     new_line_to_add = new_ID + new_items
     table += [new_line_to_add]
     data_manager.write_table_to_file(file_name, table)
@@ -75,7 +75,7 @@ def add_item(table, new_items, file_name):
     return table
 
 
-def remove(table, id_):
+def remove(table, id_, file_name):
     """
     Remove a record with a given id from the table.
 
@@ -88,7 +88,14 @@ def remove(table, id_):
     """
 
     # your code
-    pass
+
+    for i in range(len(table)):
+        if table[i][0] == id_[0]:
+            del table[i]
+            break
+    data_manager.write_table_to_file(file_name, table)
+
+    return table
 
 
 def update(table, new_items, file_name, id_):

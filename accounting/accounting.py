@@ -24,14 +24,17 @@ import main
 def choose():
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
-    table = data_manager.get_table_from_file("accounting/items.csv")
+    file_name = "accounting/items.csv"
+    table = data_manager.get_table_from_file(file_name)
     if option == "1":
-        show_table(table)
+        title_list = ["ID", "Month", "Day", "Year", "Type", "Amount"]
+        ui.print_table(table, title_list)
     elif option == "2":
-        add(table)
+        new_items = ui.get_inputs(["Month", "Day", "Year", "Type", "Amount"], "\nPlease provide the following items:")
+        common.add_item(table, new_items, file_name)
     elif option == "3":
         id_ = ui.get_inputs(["ID"], "\nWhat is the ID of the item you want to remove?")
-        remove(table, id_)
+        common.remove(table, id_, file_name)
     elif option == "4":
         id_ = ui.get_inputs(["ID"], "\nWhat is the ID of the item you want to update?")
         new_items = ui.get_inputs(new_data_properties, title)
@@ -68,58 +71,6 @@ def start_module():
             choose()
         except KeyError as err:
             ui.print_error_message(str(err))
-
-
-def show_table(table):
-    """
-    Display a table
-
-    Args:
-        table (list): list of lists to be displayed.
-
-    Returns:
-        None
-    """
-
-    # your code
-    ui.print_table(table, title_list)
-
-
-def add(table):
-    """
-    Asks user for input and adds it into the table.
-
-    Args:
-        table (list): table to add new record to
-
-    Returns:
-        list: Table with a new record
-    """
-
-    # your code
-    
-    new_items = ui.get_inputs(new_data_properties, title)
-    common.add_item(table, new_items, file_name)
-
-    return table
-
-
-def remove(table, id_):
-    """
-    Remove a record with a given id from the table.
-
-    Args:
-        table (list): table to remove a record from
-        id_ (str): id of a record to be removed
-
-    Returns:
-        list: Table without specified record.
-    """
-
-    # your code
-    
-
-    # return table
 
 
 def update(table, id_):
@@ -169,12 +120,3 @@ def avg_amount(table, year):
     """
 
     # your code
-
-
-file_name = "accounting/items.csv"
-table = "items.csv"
-title_list = ["ID", "Month", "Day", "Year", "Type", "Amount"]
-title = "\nPlease provide the following items:"
-new_data_properties = ["Month", "Day", "Year", "Type", "Amount"]
-remove_data_id = ["ID"]
-title_remove = "\nWhat is the ID of the item you want to remove?"
