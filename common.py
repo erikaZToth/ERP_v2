@@ -37,23 +37,14 @@ def generate_random(table):
                     special_characters_list[random.randint(0, (len(special_characters_list)-1))] +
                     special_characters_list[random.randint(0, (len(special_characters_list)-1))])
 
-    check_generate_random(table, generated)
     return generated
-
-
-def check_generate_random(table, generated):
-    for i in range(len(table)):
-        if generated == table[i][0]:
-            generate_random(table)
-        else:
-            return generated
 
 
 def start_module():
     pass
 
 
-def add_item(table, new_items, file_name):
+def add_item(table, new_data_properties, file_name):
     """
     Asks user for input and adds it into the table.
 
@@ -65,6 +56,8 @@ def add_item(table, new_items, file_name):
     """
 
     new_ID = [generate_random(table)]
+    title = "Please provide the following items: "
+    new_items = ui.get_inputs(new_data_properties, title)
     new_line_to_add = new_ID + new_items
     table += [new_line_to_add]
     data_manager.write_table_to_file(file_name, table)
@@ -89,11 +82,10 @@ def remove(table, id_, file_name):
             del table[i]
             break
     data_manager.write_table_to_file(file_name, table)
-
     return table
 
 
-def update(table, new_items, file_name, id_):
+def update(table, id_, new_data_properties, file_name):
 
     """
     Updates specified record in the table. Ask users for new data.
@@ -106,9 +98,9 @@ def update(table, new_items, file_name, id_):
         list: table with updated record
     """
 
-    new_line_elements = new_items
-    new_line_elements.insert(0, id_[0])
-    # print(new_line_elements)
+    title = "Please provide the following items: "
+    new_items = ui.get_inputs(new_data_properties, title)
+    new_line_elements = id_ + new_items
 
     for i in range(len(table)):
         if id_[0] == table[i][0]:

@@ -49,16 +49,17 @@ def print_table(table, title_list):
     for column in range(number_of_columns):
         title_formatted += str(title_list[column] + " | ").rjust(max_width_of_column_list[column] + 3)
     print(title_formatted)
-    print("\\" + "=" * (width_for_formatting) + "/")
-
+    
     # format and print table
     for row in range(number_of_rows):
+        print("|" + "–" * (width_for_formatting) + "|")
         row_of_table = table[row]
         row_formatted = "| "
         for column in range(number_of_columns):
             row_formatted += str(row_of_table[column] + " | ").rjust(max_width_of_column_list[column] + 3)
         print(row_formatted)
-        print("|" + "–" * (width_for_formatting) + "|")
+        
+    print("\\" + "=" * (width_for_formatting) + "/")
 
 
 def print_result(result, label):
@@ -74,6 +75,7 @@ def print_result(result, label):
     """
 
     # your code
+    print(label, result)
 
 
 def print_menu(title, list_options, exit_message):
